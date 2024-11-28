@@ -40,14 +40,17 @@ namespace UsuariosBaseDeDatos
             //{
             //    if (user == null)
             //    {
+            //        modal.labelUserName.Text = "ERROR";
             //        modal.labelSecret.Text = "Usuario inexistente.";
             //    }
             //    else if (!user.VerifyPassword(pass))
             //    {
+            //        modal.labelUserName.Text = "ERROR";
             //        modal.labelSecret.Text = "Password incorrecta.";
             //    }
             //    else
             //    {
+            //        modal.labelUserName.Text = "Bienvenid@ " + user.GetUserName() + ". Su secreto bien guardado es:";
             //        modal.labelSecret.Text = user.GetSecret();
             //    }
             //    modal.ShowDialog();
@@ -59,31 +62,44 @@ namespace UsuariosBaseDeDatos
             string username = textBox1.Text;
             string password = textBox2.Text;
 
-
+            //string connectionString = "Host=localhost;Port=5432;Database=FormsDataBase;Username=postgres;Password=tup";
             string connectionString = _configuration.GetConnectionString("DefaultConnection");
 
             using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
             {
-                string query = $"SELECT COUNT(*) FROM USERS WHERE USERNAME = '{username}' AND USERPASS = '{password}'";
-
+                string query = $"SELECT * FROM USERS WHERE USERNAME = '{username}' AND USERPASS = '{password}'";
+                //string query = $"SELECT * FROM authenticate_user('{username}', '{password}')";
+                //string query = "SELECT * FROM authenticate_user(@username, @password)";
+                //string query = "SELECT * FROM USERS WHERE USERNAME = @username AND USERPASS = @password";
                 using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
                 {
-                    //command.Parameters.AddWithValue("@Username", username);
-                    //command.Parameters.AddWithValue("@UserPass", password);
-
+                    
                     try
                     {
                         connection.Open();
 
-                        int count = Convert.ToInt32(command.ExecuteScalar());
+                        using (NpgsqlDataReader reader = command.ExecuteReader())
+                        {
+                            using (Result modal = new Result())
+                            {
+                                if (reader.Read())
+                                {
+                                    string retrievedUsername = reader.GetString(0);
+                                    string retrievedPassword = reader.GetString(1);
+                                    string retrievedSecret = reader.GetString(2);
 
-                        if (count > 0)
-                        {
-                            MessageBox.Show("Login exitoso");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Usuario o contraseña incorrectos");
+                                    User user = new User(retrievedUsername, retrievedPassword, retrievedSecret);
+
+                                    modal.labelUserName.Text = "Bienvenid@ " + user.GetUserName() + ". Su secreto bien guardado es:";
+                                    modal.labelSecret.Text = user.GetSecret();
+                                }
+                                else
+                                {
+                                    modal.labelUserName.Text = "ERROR";
+                                    modal.labelSecret.Text = "Usuario o password incorrecto.";
+                                }
+                                modal.ShowDialog();
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -92,6 +108,7 @@ namespace UsuariosBaseDeDatos
                     }
                 }
             }
+
 
 
 

@@ -31,11 +31,13 @@
             groupBox1 = new GroupBox();
             labelSecret = new Label();
             helpProvider1 = new HelpProvider();
+            labelUserName = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(labelUserName);
             groupBox1.Controls.Add(labelSecret);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(12, 12);
@@ -49,11 +51,20 @@
             // 
             labelSecret.AutoSize = true;
             labelSecret.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelSecret.Location = new Point(6, 57);
+            labelSecret.Location = new Point(23, 82);
             labelSecret.Name = "labelSecret";
             labelSecret.Size = new Size(92, 21);
             labelSecret.TabIndex = 0;
             labelSecret.Text = "labelSecret";
+            // 
+            // labelUserName
+            // 
+            labelUserName.AutoSize = true;
+            labelUserName.Location = new Point(23, 52);
+            labelUserName.Name = "labelUserName";
+            labelUserName.Size = new Size(38, 15);
+            labelUserName.TabIndex = 1;
+            labelUserName.Text = "label1";
             // 
             // Result
             // 
@@ -76,5 +87,6 @@
         public GroupBox groupBox1;
         private HelpProvider helpProvider1;
         public Label labelSecret;
+        public Label labelUserName;
     }
 }

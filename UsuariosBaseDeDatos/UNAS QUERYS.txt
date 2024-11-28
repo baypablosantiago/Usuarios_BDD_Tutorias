@@ -1,0 +1,37 @@
+create table USERS(
+	username varchar(50),
+	userpass varchar(50),
+	sensitive_information varchar(200),
+	primary key (username)
+);
+
+insert into USERS values ('pablo','pass123','estoy enganchado de la luz hace 7 años');
+insert into USERS values ('juan','password','no me gusta programar, solamente quiero plata');
+insert into USERS values ('rosa','12345','le pongo azucar al pastel de papa');
+
+SELECT * FROM USERS;
+
+
+
+
+
+CREATE OR REPLACE FUNCTION authenticate_user(param_username VARCHAR, param_password VARCHAR)
+RETURNS TABLE(username VARCHAR, userpass VARCHAR, sensitive_information VARCHAR) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT u.username, u.userpass, u.sensitive_information
+    FROM users u
+    WHERE u.username = param_username AND u.userpass = param_password;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SQL INYECTIONS
+
+' OR 1=1 --
+
+rosa' --
+
+juan' UNION SELECT userpass AS username, '123' userpass, '123' sensitive_information FROM USERS WHERE username = 'juan' ORDER BY username DESC; --
+
+'; DELETE FROM USERS; --
