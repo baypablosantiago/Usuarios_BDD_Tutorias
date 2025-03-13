@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            labelUserName = new Label();
             labelSecret = new Label();
             helpProvider1 = new HelpProvider();
-            labelUserName = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -39,32 +39,33 @@
             // 
             groupBox1.Controls.Add(labelUserName);
             groupBox1.Controls.Add(labelSecret);
-            groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(12, 12);
+            groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            groupBox1.Location = new Point(-5, 1);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(445, 133);
+            groupBox1.Size = new Size(478, 163);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Ingreso al sistema";
-            // 
-            // labelSecret
-            // 
-            labelSecret.AutoSize = true;
-            labelSecret.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelSecret.Location = new Point(23, 82);
-            labelSecret.Name = "labelSecret";
-            labelSecret.Size = new Size(92, 21);
-            labelSecret.TabIndex = 0;
-            labelSecret.Text = "labelSecret";
+            groupBox1.Text = "Mensaje de Sistema:";
             // 
             // labelUserName
             // 
             labelUserName.AutoSize = true;
-            labelUserName.Location = new Point(23, 52);
+            labelUserName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            labelUserName.Location = new Point(23, 43);
             labelUserName.Name = "labelUserName";
-            labelUserName.Size = new Size(38, 15);
+            labelUserName.Size = new Size(52, 21);
             labelUserName.TabIndex = 1;
             labelUserName.Text = "label1";
+            // 
+            // labelSecret
+            // 
+            labelSecret.AutoSize = true;
+            labelSecret.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
+            labelSecret.Location = new Point(23, 91);
+            labelSecret.Name = "labelSecret";
+            labelSecret.Size = new Size(89, 21);
+            labelSecret.TabIndex = 0;
+            labelSecret.Text = "labelSecret";
             // 
             // Result
             // 
@@ -76,7 +77,7 @@
             Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "Result";
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Modal Resultado";
+            Text = "Resultado Login";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

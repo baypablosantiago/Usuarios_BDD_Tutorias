@@ -47,16 +47,16 @@
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(39, 28);
+            panel1.Location = new Point(12, 12);
             panel1.Name = "panel1";
-            panel1.Size = new Size(428, 222);
+            panel1.Size = new Size(535, 228);
             panel1.TabIndex = 0;
             // 
             // button1
             // 
-            button1.Location = new Point(161, 179);
+            button1.Location = new Point(173, 184);
             button1.Name = "button1";
-            button1.Size = new Size(130, 23);
+            button1.Size = new Size(188, 23);
             button1.TabIndex = 5;
             button1.Text = "Aceptar";
             button1.UseVisualStyleBackColor = true;
@@ -64,23 +64,23 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(114, 132);
+            textBox2.Location = new Point(85, 132);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(287, 23);
+            textBox2.Size = new Size(413, 23);
             textBox2.TabIndex = 4;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(114, 71);
+            textBox1.Location = new Point(85, 71);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(287, 23);
+            textBox1.Size = new Size(413, 23);
             textBox1.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(80, 23);
+            label3.Location = new Point(3, 13);
             label3.Name = "label3";
             label3.Size = new Size(251, 21);
             label3.TabIndex = 2;
@@ -90,7 +90,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(32, 134);
+            label2.Location = new Point(3, 134);
             label2.Name = "label2";
             label2.Size = new Size(76, 21);
             label2.TabIndex = 1;
@@ -100,7 +100,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(32, 73);
+            label1.Location = new Point(3, 73);
             label1.Name = "label1";
             label1.Size = new Size(42, 21);
             label1.TabIndex = 0;
@@ -110,7 +110,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(521, 281);
+            ClientSize = new Size(559, 252);
             Controls.Add(panel1);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
