@@ -24,11 +24,6 @@ namespace UsuariosBaseDeDatos
             return username;
         }
 
-        public string GetPassword()
-        {
-            return password;
-        }
-
         public bool VerifyPassword(string password)
         {
             return password == this.password ? true : false;

@@ -11,18 +11,18 @@ namespace UsuariosBaseDeDatos
             InitializeComponent();
             SQLitePCL.Batteries.Init();
 
-            //_configuration = new ConfigurationBuilder()
-            //.SetBasePath(Directory.GetCurrentDirectory())
-            //.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            //.Build();
+            _config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .Build();
         }
 
-        //private IConfiguration _configuration;
+        private IConfiguration _config;
 
         private void Form1_Load(object sender, EventArgs e) //si no existe, se crea la bdd y se agregan los users
         {
-            string connectionString = "Data Source=FormsDataBase.db;";
-            
+            //string connectionString = "Data Source=SecretsDataBase.db;";               // 1 - Forma vulnerable
+            string connectionString = _config.GetConnectionString("DefaultConnection"); // 2 - Usando appsettings
             using (SqliteConnection connection = new SqliteConnection(connectionString))
             {
                 connection.Open();
@@ -45,20 +45,16 @@ namespace UsuariosBaseDeDatos
                     int count = Convert.ToInt32(countCommand.ExecuteScalar());
                     if (count == 0)
                     {
-                        List<User> userList = new List<User>
-                        {
-                            new User("pablo", "pass123", "Hace 7 años que estoy enganchado de la luz."),
-                            new User("juan", "password", "No me gusta programar, pero lo hago por la fama y gloria."),
-                            new User("rosa", "12345", "Le pongo azúcar al pastel de papa.")
-                        };
+                        string insertQuery = @"
+                        INSERT INTO USERS (USERNAME, USERPASS, SECRET) VALUES 
+                        ('pablo', 'pass123', 'Hace 7 años que estoy enganchado de la luz.'),
+                        ('juan', 'javascript666', 'No me gusta programar, pero lo hago por la fama y gloria.'),
+                        ('rosa', 'holasoyrosa', 'Le pongo azúcar al pastel de papa.');
+                        ";
 
-                        foreach (var user in userList)
+                        using (SqliteCommand insertCommand = new SqliteCommand(insertQuery, connection))
                         {
-                            string insertQuery = $"INSERT INTO USERS (USERNAME, USERPASS, SECRET) VALUES ('{user.GetUserName()}', '{user.GetPassword()}', '{user.GetSecret()}');";
-                            using (SqliteCommand insertCommand = new SqliteCommand(insertQuery, connection))
-                            {
-                                insertCommand.ExecuteNonQuery();
-                            }
+                            insertCommand.ExecuteNonQuery();
                         }
 
                         MessageBox.Show("Base de datos creada y usuarios insertados.");
@@ -69,52 +65,26 @@ namespace UsuariosBaseDeDatos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ////ACA SIN USAR LA BASE DE DATOS, SOLAMENTE HACIENDO QUERY EN LA LISTA HARDCODEADA
-            //string name = textBox1.Text;
-            //string pass = textBox2.Text;
-
-            //User user = (from u in userList where u.GetUserName() == name select u).FirstOrDefault();
-
-            //using (Result modal = new Result())
-            //{
-            //    if (user == null)
-            //    {
-            //        modal.labelUserName.Text = "ERROR";
-            //        modal.labelSecret.Text = "Usuario inexistente.";
-            //    }
-            //    else if (!user.VerifyPassword(pass))
-            //    {
-            //        modal.labelUserName.Text = "ERROR";
-            //        modal.labelSecret.Text = "Password incorrecta.";
-            //    }
-            //    else
-            //    {
-            //        modal.labelUserName.Text = "Bienvenid@ " + user.GetUserName() + ". Su secreto bien guardado es:";
-            //        modal.labelSecret.Text = user.GetSecret();
-            //    }
-            //    modal.ShowDialog();
-            //}
-
-
-            //ACA CON BASE DE DATOS
-
             string username = textBox1.Text;
             string password = textBox2.Text;
 
             // en https://www.connectionstrings.com pueden ver los distintos tipos de connection strings
-            string connectionString = "Data Source=FormsDataBase.db;";
+            //string connectionString = "Data Source=SecretsDataBase.db;";
+            string connectionString = _config.GetConnectionString("DefaultConnection");
 
             using (SqliteConnection connection = new SqliteConnection(connectionString))
             {
-                // Consulta vulnerable a SQL Injection
-                string query = $"SELECT * FROM USERS WHERE USERNAME = '{username}' AND USERPASS = '{password}'";
+                string query = $"SELECT * FROM USERS WHERE USERNAME = '{username}' AND USERPASS = '{password}'"; // 1 - Forma vulnerable
+                //string query = "SELECT * FROM USERS WHERE USERNAME = @username AND USERPASS = @password";      // 2 - Usando parametros
 
                 using (SqliteCommand command = new SqliteCommand(query, connection))
                 {
+                    //DESCOMENTAR PARA EL PUNTO 2
+                    //command.Parameters.AddWithValue("@username", username);
+                    //command.Parameters.AddWithValue("@password", password);
                     try
                     {
                         connection.Open();
-
                         using (SqliteDataReader reader = command.ExecuteReader())
                         {
                             using (Result modal = new Result())
@@ -148,10 +118,6 @@ namespace UsuariosBaseDeDatos
 
 
 
-
-
         }
     }
 }
-
-

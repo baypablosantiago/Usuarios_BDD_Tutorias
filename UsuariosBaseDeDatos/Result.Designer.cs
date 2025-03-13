@@ -32,17 +32,19 @@
             labelUserName = new Label();
             labelSecret = new Label();
             helpProvider1 = new HelpProvider();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(labelUserName);
             groupBox1.Controls.Add(labelSecret);
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(-5, 1);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(499, 163);
+            groupBox1.Size = new Size(499, 181);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Mensaje de Sistema:";
@@ -67,12 +69,23 @@
             labelSecret.TabIndex = 0;
             labelSecret.Text = "labelSecret";
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(182, 143);
+            button1.Name = "button1";
+            button1.Size = new Size(127, 23);
+            button1.TabIndex = 2;
+            button1.Text = "Volver";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Result
             // 
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(489, 157);
+            ClientSize = new Size(489, 179);
             Controls.Add(groupBox1);
             Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "Result";
@@ -89,5 +102,6 @@
         private HelpProvider helpProvider1;
         public Label labelSecret;
         public Label labelUserName;
+        private Button button1;
     }
 }
