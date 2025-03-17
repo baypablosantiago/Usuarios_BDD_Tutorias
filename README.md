@@ -2,7 +2,7 @@
 
 Este es un proyecto utilizado en las tutorias de la Tecnicatura Universitaria en Programacion (TUP), Universidad Tecnologica Nacional (UTN) - Facultad Regional Paraná.
 
-A traves de una sencilla aplicacion de escritorio se busca ejemplificar algunas de las malas practicas al momento de crear codigo, sus consecuencias y como evitarlas. Particularmente se trabajó con las inyecciones SQL, pero tambien se trabajó con las string connections y el appsetting standart de .NET Core y posteriores.
+A traves de una sencilla aplicacion de escritorio se busca ejemplificar algunas de las malas practicas al momento de crear codigo, sus consecuencias y como evitarlas. Particularmente se trabajó con las inyecciones SQL, pero tambien se trataron las string connections y el appsetting standart de .NET Core y posteriores, adaptado a .NET Framework.
 
 ### Ficha Tecnica
 
@@ -21,8 +21,12 @@ A traves de una sencilla aplicacion de escritorio se busca ejemplificar algunas 
    ```sh
    git clone https://github.com/baypablosantiago/Usuarios_BDD_Tutorias.git
     ```
-FOTO DEL MENSAJE MESSAGE BOX  
-3. La pestaña principal posee un textBox de usuario y otro de contraseña, disparandose una ventana modal con la informacion privada del usuario en caso de un login correcto o un mensaje de error en un login fallido. Los usuarios se encuentran hardcodeados en el codigo.
+
+![imagen](https://github.com/user-attachments/assets/4b607a63-9612-4795-b1d5-55305ec4f95a)
+
+3. La pestaña principal posee un textBox de usuario y otro de contraseña, disparandose una ventana modal con la informacion privada del usuario en caso de un login correcto o un mensaje de error en un login fallido. **Los usuarios se encuentran hardcodeados en el codigo.**
+
+![imagen](https://github.com/user-attachments/assets/d70b268e-1481-4d26-877b-88bac827dc33)
 
 4. En el siguiente apartado estan las querys para ingresar en los textBox de la aplicacion y ver los resultados.
 El codigo se encuentra totalmente comentado, con las aclaraciones sobre que medidas de seguridad se utilizan para evitar estas vulneraciones de seguridad.
@@ -56,7 +60,8 @@ El codigo se encuentra totalmente comentado, con las aclaraciones sobre que medi
     
 ## 3. Nota final
 
->Cuidado con la luz mala.
->
->
+>[!NOTE] Importante
+> Hoy en dia es poco probable encontrar una app que llegue a ser vulnerable a este tipo de ataques,
+> pero igualmente la idea de esta clase fue dar ejemplo de la importancia de general un codigo
+> de calidad y seguro.
 
