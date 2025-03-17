@@ -60,8 +60,10 @@ El codigo se encuentra totalmente comentado, con las aclaraciones sobre que medi
     
 ## 3. Nota final
 
->[!NOTE] Importante
 > Hoy en dia es poco probable encontrar una app que llegue a ser vulnerable a este tipo de ataques,
-> pero igualmente la idea de esta clase fue dar ejemplo de la importancia de general un codigo
-> de calidad y seguro.
+> pero igualmente la idea de esta clase fue dar un ejemplo de la importancia de escribir un codigo seguro
+> ya que existen otro tipo de ataques que actualmente se trabaja para para mitigar, como inyecciones en otras
+> capas de la aplicación, ataques de phishing, explotación de vulnerabilidades en dependencias, entre otros.
+> La seguridad en el desarrollo de software es un proceso continuo, por lo que es fundamental mantenerse actualizado
+> sobre buenas prácticas y herramientas de protección para prevenir vulnerabilidades en nuestras aplicaciones.
 
